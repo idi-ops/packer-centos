@@ -10,5 +10,7 @@ tmp
 Makefile.local
 box/
 .tmpatlas/
-
+*.pwd
+*.pwi
+*.hwm
 .DS_Store
