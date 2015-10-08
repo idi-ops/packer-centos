@@ -165,7 +165,7 @@ main() {
        JSON_RESULT=$(curl -s -f -X PUT "${ATLAS_API_URL}/box/${ATLAS_USERNAME}/${BOX_NAME}/version/${VERSION}" -d "access_token=${ATLAS_ACCESS_TOKEN}" -d "version[description]=${DESCRIPTION}" || true)
     fi
 
-    BOXCUTTER_BASE_URL=http://cdn.boxcutter.io/centos
+    BOXCUTTER_BASE_URL=https://idrc.cachefly.net/virtual-machines
     if [[ -e ${VMWARE_BOX_FILE} ]]; then
         PROVIDER=vmware_desktop
         PROVIDER_URL=${BOXCUTTER_BASE_URL}/vmware${VMWARE_VERSION}/${BOX_NAME}${BOX_SUFFIX}

@@ -120,7 +120,7 @@
     "iso_checksum": "1795184136b8bdddabe50453cc2cc2d46f0f7c5e",
     "iso_name": "CentOS-7-x86_64-DVD-1503-01.iso",
     "iso_path": "iso",
-    "iso_url": "http://mirrors.sonic.net/centos/7.1.1503/isos/x86_64/CentOS-7-x86_64-DVD-1503-01.iso",
+    "iso_url": "http://centos.bhs.mirrors.ovh.net/ftp.centos.org/7.1.1503/isos/x86_64/CentOS-7-x86_64-DVD-1503-01.iso",
     "no_proxy": "{{env `no_proxy`}}",
     "rsync_proxy": "{{env `rsync_proxy`}}",
     "ssh_password": "vagrant",

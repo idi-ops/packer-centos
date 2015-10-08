@@ -3,7 +3,7 @@ ifneq ("$(wildcard Makefile.local)", "")
 	include Makefile.local
 endif
 
-PACKER ?= packer
+PACKER := /opt/packer/packer
 
 # Possible values for CM: (nocm | chef | chefdk | salt | puppet)
 CM ?= nocm
@@ -111,7 +111,7 @@ $(VIRTUALBOX_BOX_DIR)/%$(BOX_SUFFIX): %.json $(SOURCES)
 
 list:
 	@echo "Prepend 'vmware/' or 'virtualbox/' to build only one target platform:"
-	@echo "  make vmware/centos66"
+	@echo "  make vmware/centos71"
 	@echo ""
 	@echo "Targets:"
 	@for shortcut_target in $(SHORTCUT_TARGETS) ; do \
@@ -121,7 +121,7 @@ list:
 validate:
 	@for template_filename in $(TEMPLATE_FILENAMES) ; do \
 		echo Checking $$template_filename ; \
-		packer validate $$template_filename ; \
+		$(PACKER) validate $$template_filename ; \
 	done
 
 clean: clean-builders clean-output clean-packer-cache
@@ -175,19 +175,18 @@ s3cp-$(VIRTUALBOX_BOX_DIR)/%$(BOX_SUFFIX): $(VIRTUALBOX_BOX_DIR)/%$(BOX_SUFFIX)
 s3cp-vmware: $(addprefix s3cp-,$(VMWARE_BOX_FILES))
 s3cp-virtualbox: $(addprefix s3cp-,$(VIRTUALBOX_BOX_FILES))
 
-ATLAS_NAME ?= boxcutter
+ATLAS_NAME ?= inclusivedesign
 
 test-atlas: test-atlas-vmware test-atlas-virtualbox
 test-atlas-vmware: $(addprefix test-atlas-,$(VMWARE_BOX_FILES))
 test-atlas-virtualbox: $(addprefix test-atlas-,$(VIRTUALBOX_BOX_FILES))
 
 test-atlas-$(VMWARE_BOX_DIR)%$(BOX_SUFFIX):
-	bin/test-vagrantcloud-box.sh boxcutter$* vmware_fusion vmware_desktop $(CURRENT_DIR)/test/*_spec.rb
-	bin/test-vagrantcloud-box.sh box-cutter$* vmware_fusion vmware_desktop $(CURRENT_DIR)/test/*_spec.rb
+	bin/test-vagrantcloud-box.sh inclusivedesign$* vmware_fusion vmware_desktop $(CURRENT_DIR)/test/*_spec.rb
+	bin/test-vagrantcloud-box.sh inclusivedesign$* vmware_fusion vmware_desktop $(CURRENT_DIR)/test/*_spec.rb
 
 test-atlas-$(VIRTUALBOX_BOX_DIR)%$(BOX_SUFFIX):
-	bin/test-vagrantcloud-box.sh boxcutter$* virtualbox virtualbox $(CURRENT_DIR)/test/*_spec.rb
-	bin/test-vagrantcloud-box.sh box-cutter$* virtualbox virtualbox $(CURRENT_DIR)/test/*_spec.rb
+	bin/test-vagrantcloud-box.sh inclusivedesign$* virtualbox virtualbox $(CURRENT_DIR)/test/*_spec.rb
 
 register-atlas: $(addprefix register-atlas-,$(basename $(TEMPLATE_FILENAMES)))
 
