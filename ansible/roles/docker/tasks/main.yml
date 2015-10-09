@@ -1,0 +1,12 @@
+---
+
+- name: Install Docker packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: docker_packages
+
+- name: Enable Docker
+  service:
+    name: docker
+    enabled: yes

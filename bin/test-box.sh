@@ -23,7 +23,7 @@ vagrant_provider=$3
 test_src_path=$4
 
 box_filename=$(basename "${box_path}")
-box_name=${box_filename%.*}
+box_name=idi-${box_filename%.*}
 tmp_path=/tmp/boxtest
 
 rm -rf ${tmp_path}

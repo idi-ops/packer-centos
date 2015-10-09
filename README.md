@@ -84,11 +84,12 @@ the output of `make list` accordingly.
 
 Possible values for the CM variable are:
 
-* `nocm` - No configuration management tool
-* `chef` - Install Chef
-* `chefdk` - Install Chef Development Kit
-* `puppet` - Install Puppet
-* `salt`  - Install Salt
+* `nocm`    - No configuration management tool
+* `ansible` - Install Ansible
+* `chef`    - Install Chef
+* `chefdk`  - Install Chef Development Kit
+* `puppet`  - Install Puppet
+* `salt`    - Install Salt
 
 You can also specify a variable `CM_VERSION`, if supported by the
 configuration management tool, to override the default of `latest`.
@@ -119,13 +120,26 @@ of the default insecure vagrant key when the image is being used
 outside of vagrant.  Set `INSTALL_VAGRANT_KEY := false`, the default
 is true.
 
+## Timezone
+
+Users are encouraged to install the vagrant-timezone plugin to synchronize
+their VM's timezone with the host's.
+
+    vagrant plugin install vagrant-timezone
+
+Add this to the Vagrantfile:
+
+    if Vagrant.has_plugin?("vagrant-timezone")
+      config.timezone.value = :host
+    end
+
 ## Contributing
 
 
 1. Fork and clone the repo.
 2. Create a new branch, please don't work in your `master` branch directly.
 3. Add new [Serverspec](http://serverspec.org/) or [Bats](https://blog.engineyard.com/2014/bats-test-command-line-tools) tests in the `test/` subtree for the change you want to make.  Run `make test` on a relevant template to see the tests fail (like `make test-virtualbox/centos65`).
-4. Fix stuff.  Use `make ssh` to interactively test your box (like `make ssh-virtualbox/centos71`).
+4. Fix stuff.  Use `make ssh` to interactively test your box (like `make ssh-virtualbox/centos7`).
 5. Run `make test` on a relevant template (like `make test-virtualbox/centos65`) to see if the tests pass.  Repeat steps 3-5 until done.
 6. Update `README.md` and `AUTHORS` to reflect any changes.
 7. If you have a large change in mind, it is still preferred that you split them into small commits.  Good commit messages are important.  The git documentatproject has some nice guidelines on [writing descriptive commit messages](http://git-scm.com/book/ch5-2.html#Commit-Guidelines).

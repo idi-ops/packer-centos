@@ -4,11 +4,12 @@
 #
 # Values for CM can be:
 #   'nocm'            -- build a box without a configuration management tool
+#   'ansible'         -- build a box with the Ansible
 #   'chef'            -- build a box with the Chef
 #   'chefdk'          -- build a box with the Chef Development Kit
 #   'puppet'          -- build a box with the Puppet
 #
-# Values for CM_VERSION can be (when CM is chef|salt|puppet):
+# Values for CM_VERSION can be (when CM is ansible|chef|salt|puppet):
 #   'x.y.z'           -- build a box with version x.y.z of Chef
 #   'x.y'             -- build a box with version x.y of Salt
 #   'latest'          -- build a box with the latest version
@@ -21,6 +22,20 @@ CM_VERSION=${CM_VERSION:-latest}
 #
 # CM installs.
 #
+
+install_ansible()
+{
+    echo "==> Installing Ansible"
+    yum -y install epel-release
+    if [[ ${CM_VERSION:-} == 'latest' ]]; then
+        echo "==> Installing latest Ansible version"
+        yum install -y ansible
+    else
+        echo "==> Installing Ansible version ${CM_VERSION}"
+        yum install -y ansible-${CM_VERSION}
+    fi
+}
+
 
 install_chef()
 {
@@ -83,6 +98,10 @@ install_puppet()
 #
 
 case "${CM}" in
+  'ansible')
+    install_ansible
+    ;;
+
   'chef')
     install_chef
     ;;
