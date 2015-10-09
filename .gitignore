@@ -13,4 +13,6 @@ box/
 *.pwd
 *.pwi
 *.hwm
+ansible/roles/vagrant
+ansible/roles/facts
 .DS_Store

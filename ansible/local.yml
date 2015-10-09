@@ -1,0 +1,11 @@
+---
+- name: Configure Packer images
+  hosts: localhost
+  become: yes
+  become_user: root
+
+  roles:
+
+    - common
+    - docker
+    - vagrant

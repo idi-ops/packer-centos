@@ -23,11 +23,11 @@
       "ssh_wait_timeout": "10000s",
       "tools_upload_flavor": "linux",
       "type": "vmware-iso",
-      "vm_name": "centos71",
+      "vm_name": "centos7",
       "vmx_data": {
         "cpuid.coresPerSocket": "1",
-        "memsize": "512",
-        "numvcpus": "1"
+        "memsize": "1024",
+        "numvcpus": "2"
       }
     },
     {
@@ -56,24 +56,25 @@
           "modifyvm",
           "{{.Name}}",
           "--memory",
-          "512"
+          "1024"
         ],
         [
           "modifyvm",
           "{{.Name}}",
           "--cpus",
-          "1"
+          "2"
         ]
       ],
       "virtualbox_version_file": ".vbox_version",
-      "vm_name": "centos71"
+      "vm_name": "centos7"
     }
   ],
   "post-processors": [
     {
       "keep_input_artifact": false,
-      "output": "box/{{.Provider}}/centos71-{{user `cm`}}{{user `cm_version`}}-{{user `version`}}.box",
-      "type": "vagrant"
+      "output": "box/{{.Provider}}/idi-centos7-{{user `version`}}.box",
+      "type": "vagrant",
+      "vagrantfile_template": "tpl/vagrantfile-centos7.tpl"
     }
   ],
   "provisioners": [
@@ -94,23 +95,30 @@
       ],
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
       "scripts": [
-        "script/fix-slow-dns.sh",
-        "script/sshd.sh",
-        "script/update.sh",
-        "script/vagrant.sh",
         "script/vmware.sh",
         "script/virtualbox.sh",
         "script/cmtool.sh",
-        "script/motd.sh",
-        "script/cleanup.sh"
+        "script/motd.sh"
       ],
       "type": "shell"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "ansible/local.yml",
+      "playbook_dir": "ansible"
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "scripts": [
+        "script/cleanup.sh"
+      ]
     }
   ],
   "variables": {
     "cleanup_pause": "",
-    "cm": "nocm",
-    "cm_version": "",
+    "cm": "ansible",
+    "cm_version": "latest",
     "ftp_proxy": "{{env `ftp_proxy`}}",
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
@@ -125,7 +133,7 @@
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "update": "false",
-    "version": "0.1.0"
+    "version": "0.7.0"
   }
 }
 

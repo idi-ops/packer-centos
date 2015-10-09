@@ -1,0 +1,54 @@
+---
+- name: Ensure root password is right
+  user:
+    user: root
+    password: vagrant
+    update_password: always
+
+- name: Create vagrant user
+  user:
+    name: vagrant
+    password: vagrant
+    update_password: always
+    createhome: yes
+
+- name: Set insecure vagrant key
+  authorized_key:
+    user: vagrant
+    exclusive: yes
+    manage_dir: yes
+    state: present
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA6NF8iallvQVp22WDkTkyrtvp9eWW6A8YVr+kz4TjGYe7gHzIw+niNltGEFHzD8+v1I2YJ6oXevct1YeS0o9HZyN1Q9qgCgzUFtdOKLv6IedplqoPkcmF0aYet2PkEDo3MlTBckFXPITAMzF8dJSIFo9D8HfdOV0IAdx4O7PtixWKn5y2hMNG0zQPyUecp4pzC6kivAIhyfHilFR61RGL+GPXQ2MWZWFYbAGjyiYJnAmCP3NOTd0jMZEnDkbUvxhMmBYSdETk1rRgm+R4LOzFUGaHqHDLKLX+FIPKcF96hrucXzcWyLbIbEgE98OHlnVYCzRdK8jlqm8tehUc9c9WhQ== vagrant insecure public key"
+
+- name: Allow password-less sudo for vagrant user
+  lineinfile:
+    dest: /etc/sudoers
+    line: "vagrant ALL=(ALL) NOPASSWD: ALL"
+    state: present
+    backup: no
+
+- name: Tweak sshd_config
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: ".*UseDNS.*"
+    line: "UseDNS no"
+
+- name: Fix slow DNS
+  lineinfile:
+    dest: /etc/sysconfig/network
+    line: 'RES_OPTIONS="single-request-reopen"'
+
+#- name: Update all packages
+#  yum:
+#    name: '*'
+#    state: latest
+
+# work around for bug in ansible 1.9.3
+- name: Update all packages
+  command: /usr/bin/yum update -y 
+
+- name: Install common packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: common_packages

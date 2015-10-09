@@ -5,10 +5,10 @@ endif
 
 PACKER := /opt/packer/packer
 
-# Possible values for CM: (nocm | chef | chefdk | salt | puppet)
-CM ?= nocm
+# Possible values for CM: (nocm | chef | chefdk | salt | puppet | ansible)
+CM ?= ansible
 # Possible values for CM_VERSION: (latest | x.y.z | x.y)
-CM_VERSION ?=
+CM_VERSION ?= latest
 ifndef CM_VERSION
 	ifneq ($(CM),nocm)
 		CM_VERSION = latest
@@ -19,11 +19,7 @@ SSH_PASSWORD ?= vagrant
 INSTALL_VAGRANT_KEY ?= true
 ISO_PATH ?= iso
 BOX_VERSION ?= $(shell cat VERSION)
-ifeq ($(CM),nocm)
-	BOX_SUFFIX := -$(CM)-$(BOX_VERSION).box
-else
-	BOX_SUFFIX := -$(CM)$(CM_VERSION)-$(BOX_VERSION).box
-endif
+BOX_SUFFIX := -$(BOX_VERSION).box
 # Packer does not allow empty variables, so only pass variables that are defined
 PACKER_VARS_LIST = 'cm=$(CM)' 'headless=$(HEADLESS)' 'update=$(UPDATE)' 'version=$(BOX_VERSION)' 'ssh_username=$(SSH_USERNAME)' 'ssh_password=$(SSH_PASSWORD)' 'install_vagrant_key=$(INSTALL_VAGRANT_KEY)' 'iso_path=$(ISO_PATH)'
 ifdef CM_VERSION
@@ -37,7 +33,7 @@ else
 endif
 BUILDER_TYPES := vmware virtualbox
 TEMPLATE_FILENAMES := $(wildcard *.json)
-BOX_FILENAMES := $(TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
+BOX_FILENAMES := idi-$(TEMPLATE_FILENAMES:.json=$(BOX_SUFFIX))
 TEST_BOX_FILES := $(foreach builder, $(BUILDER_TYPES), $(foreach box_filename, $(BOX_FILENAMES), test-box/$(builder)/$(box_filename)))
 VMWARE_BOX_DIR := box/vmware
 VIRTUALBOX_BOX_DIR := box/virtualbox
@@ -111,7 +107,7 @@ $(VIRTUALBOX_BOX_DIR)/%$(BOX_SUFFIX): %.json $(SOURCES)
 
 list:
 	@echo "Prepend 'vmware/' or 'virtualbox/' to build only one target platform:"
-	@echo "  make vmware/centos71"
+	@echo "  make vmware/centos7"
 	@echo ""
 	@echo "Targets:"
 	@for shortcut_target in $(SHORTCUT_TARGETS) ; do \
