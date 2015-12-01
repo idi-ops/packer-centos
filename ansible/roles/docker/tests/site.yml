@@ -1,0 +1,6 @@
+- name: Apply Docker role
+  hosts: localhost
+  become: yes
+
+  roles:
+    - docker

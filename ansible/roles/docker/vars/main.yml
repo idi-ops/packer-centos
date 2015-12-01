@@ -1,4 +1,11 @@
 ---
 
 docker_packages:
-  - docker
+  1.9.1:
+    - https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-1.9.1-1.el7.centos.x86_64.rpm
+    - https://yum.dockerproject.org/repo/main/centos/7/Packages/docker-engine-selinux-1.9.1-1.el7.centos.noarch.rpm
+
+docker_dependencies:
+  - docker-python
+
+docker_test_container_name: ansible-role-docker-test-container
