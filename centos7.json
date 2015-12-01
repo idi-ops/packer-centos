@@ -104,8 +104,14 @@
     },
     {
       "type": "ansible-local",
-      "playbook_file": "ansible/local.yml",
+      "playbook_file": "ansible/common.yml",
       "playbook_dir": "ansible"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "ansible/docker.yml",
+      "playbook_dir": "ansible",
+      "extra_arguments": [ "-t", "install,configure,deploy,test" ]
     },
     {
       "type": "shell",
@@ -133,7 +139,7 @@
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "update": "false",
-    "version": "0.7.0"
+    "version": "0.8.0"
   }
 }
 

@@ -1,0 +1,22 @@
+---
+
+# Because Docker is a such a critical piece of any infrastructure,
+# the version that should be installed must be explicitly defined.
+#
+# See vars/main.yml for the versions this role supports.
+docker_version: 1.9.1
+
+# Enable SELinux support
+docker_selinux_enabled: yes
+
+# Log level (debug, info, warn, error, fatal)
+docker_log_level: warn
+
+# Maximum number of open files
+docker_limit_openfiles: 1048576
+
+# Maximum number of processes
+docker_limit_processes: 1048576
+
+# Maximum core dump size (in bytes)
+docker_limit_coredump: 0

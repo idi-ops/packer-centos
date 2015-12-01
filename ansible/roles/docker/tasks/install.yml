@@ -1,0 +1,19 @@
+---
+
+- name: Import PGP key
+  rpm_key:
+    key: https://yum.dockerproject.org/gpg
+    state: present
+
+- name: Install packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: 
+    - "{{ docker_packages[docker_version] }}"
+
+- name: Installing extra dependencies
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: docker_dependencies

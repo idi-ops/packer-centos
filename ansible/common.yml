@@ -6,5 +6,6 @@
 
   roles:
 
+    - facts
+
     - common
-    - docker
