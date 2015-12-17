@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.0 (2015-12-14)
+
+* Upgraded to CentOS 7.2
+
 ## 0.7.0 (2015-10-09)
 
 * Initial import from github.com/boxcutter/centos
