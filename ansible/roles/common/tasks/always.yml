@@ -38,6 +38,16 @@
     dest: /etc/sysconfig/network
     line: 'RES_OPTIONS="single-request-reopen"'
 
+- name: Enable IDI repository
+  yum:
+    name: http://pkg.inclusivedesign.ca/centos/7/x86_64/Packages/idi-release-1.0-0.noarch.rpm
+    state: present
+
+- name: Import the IDI package signing key
+  rpm_key:
+    key: /etc/pki/rpm-gpg/RPM-GPG-KEY-IDI
+    state: present
+
 - name: Update all packages
   yum:
     name: '*'
