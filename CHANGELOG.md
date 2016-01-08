@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.1 (2016-01-08)
+
+* Enabled the Inclusive Design Institute's yum repository
+
 ## 0.9.0 (2015-12-14)
 
 * Upgraded to CentOS 7.2
