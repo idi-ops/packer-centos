@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.2 (2016-06-21)
+
+* Rebuilt with updates
+
 ## 0.9.1 (2016-01-08)
 
 * Enabled the Inclusive Design Institute's yum repository

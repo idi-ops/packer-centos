@@ -138,8 +138,8 @@
     "rsync_proxy": "{{env `rsync_proxy`}}",
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
-    "update": "false",
-    "version": "0.9.1"
+    "update": "true",
+    "version": "0.9.2"
   }
 }
 
