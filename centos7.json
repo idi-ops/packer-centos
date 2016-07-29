@@ -104,12 +104,7 @@
     },
     {
       "type": "ansible-local",
-      "playbook_file": "ansible/common.yml",
-      "playbook_dir": "ansible"
-    },
-    {
-      "type": "ansible-local",
-      "playbook_file": "ansible/docker.yml",
+      "playbook_file": "ansible/playbook.yml",
       "playbook_dir": "ansible",
       "extra_arguments": [ "-t", "install,configure,deploy,test" ]
     },
