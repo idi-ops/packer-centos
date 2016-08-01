@@ -5,9 +5,6 @@
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort}}/ks7.cfg<enter>"
       ],
       "disk_size": 65536,
-      "floppy_files": [
-        "floppy/vmware9.compat_dcache.h.patch"
-      ],
       "guest_os_type": "centos-64",
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
@@ -21,7 +18,6 @@
       "ssh_password": "{{ user `ssh_password` }}",
       "ssh_username": "{{ user `ssh_username` }}",
       "ssh_wait_timeout": "10000s",
-      "tools_upload_flavor": "linux",
       "type": "vmware-iso",
       "vm_name": "centos7",
       "vmx_data": {
