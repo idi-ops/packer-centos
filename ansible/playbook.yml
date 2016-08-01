@@ -7,6 +7,6 @@
   roles:
 
     - facts
-
-    - role: docker
-      docker_version: 1.9.1
+    - common
+    - vagrant
+    - docker
