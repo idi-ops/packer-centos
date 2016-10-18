@@ -2,13 +2,13 @@
 - name: Ensure root password is right
   user:
     user: root
-    password: vagrant
+    password: $1$4xc3H7HC$c3b.w3EU/o3SUPxuN3PZH0
     update_password: always
 
 - name: Create vagrant user
   user:
     name: vagrant
-    password: vagrant
+    password: $1$4xc3H7HC$c3b.w3EU/o3SUPxuN3PZH0
     update_password: always
     createhome: yes
 
@@ -30,8 +30,13 @@
 - name: Tweak sshd_config
   lineinfile:
     dest: /etc/ssh/sshd_config
-    regexp: ".*UseDNS.*"
-    line: "UseDNS no"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - regexp: ".*UseDNS.*"
+      line: "UseDNS no"
+    - regexp: "^PasswordAuthentication.*"
+      line: "PasswordAuthentication no"
 
 - name: Fix slow DNS
   lineinfile:

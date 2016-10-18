@@ -4,6 +4,12 @@
 #echo "==> Pausing for ${CLEANUP_PAUSE} seconds..."
 #sleep ${CLEANUP_PAUSE}
 
+echo "==> Removing old kernels"
+yum install -y yum-utils
+package-cleanup -y --oldkernels --count=1
+yum remove -y yum-utils
+yum autoremove -y
+
 echo "==> Cleaning up temporary network addresses"
 # Make sure udev doesn't block our network
 if grep -q -i "release 6" /etc/redhat-release ; then
