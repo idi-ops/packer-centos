@@ -17,11 +17,36 @@ describe 'box' do
     expect(selinux).to be_permissive
   end
 
-  # https://www.chef.io/blog/2015/02/26/bento-box-update-for-centos-and-fedora/
-  describe 'test-cacert' do
-    it 'uses the vendor-supplied openssl certificates' do
-      expect(command('openssl s_client -CAfile /etc/pki/tls/certs/ca-bundle.crt -connect packagecloud-repositories.s3.amazonaws.com:443 </dev/null 2>&1 | grep -i "verify return code"').stdout).to match /\s+Verify return code: 0 \(ok\)/
-    end
+  describe package('systemd-journal-gateway') do
+    it {should be_installed}
   end
 
+  describe yumrepo('epel') do
+    it { should exist  }
+  end
+
+  describe yumrepo('idi') do
+    it { should exist  }
+  end
+
+  # Should be only one kernel
+  describe command('ls -1 /boot/System.map* | wc -l') do
+    its(:stdout) {should eq "1\n"}
+  end
+
+  # Ansible should be installed
+  describe package('ansible') do
+    it {should be_installed}
+  end
+
+  # Docker should be installed
+  describe package('docker') do
+    it {should be_installed}
+  end
+
+  # Docker sould be running
+	describe service('docker') do
+		it { should be_enabled }
+		it { should be_running }
+	end
 end
