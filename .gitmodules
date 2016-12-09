@@ -1,9 +1,0 @@
-[submodule "ansible/roles/facts"]
-	path = ansible/roles/facts
-	url = https://github.com/idi-ops/ansible-facts
-[submodule "ansible/roles/vagrant"]
-	path = ansible/roles/vagrant
-	url = https://github.com/idi-ops/ansible-vagrant
-[submodule "ansible/roles/docker"]
-	path = ansible/roles/docker
-	url = https://github.com/idi-ops/ansible-docker
