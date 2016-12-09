@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.8 (2016-12-09)
+
+* Rebuilt with updates
+
 ## 0.9.6 (2016-07-29)
 
 * Rebuilt with updates
