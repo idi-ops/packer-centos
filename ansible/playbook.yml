@@ -9,4 +9,6 @@
     - facts
     - common
     - vagrant
-    - docker
+
+    - role: docker
+      docker_admin_users: vagrant
