@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.0 (2017-05-12)
+
+* Upgraded to CentOS 7.3
+* Fix issue with Docker config
+
 ## 0.9.8 (2016-12-09)
 
 * Rebuilt with updates

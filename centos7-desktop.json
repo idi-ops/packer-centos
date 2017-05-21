@@ -118,16 +118,16 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "install_vagrant_key": "true",
-    "iso_checksum": "4c6c65b5a70a1142dadb3c65238e9e97253c0d3a",
-    "iso_name": "CentOS-7-x86_64-DVD-1511.iso",
+    "iso_checksum": "c018577c75b2434fbb2c324789dee0ba887d9c32",
+    "iso_name": "CentOS-7-x86_64-DVD-1611.iso",
     "iso_path": "iso",
-    "iso_url": "http://centos.bhs.mirrors.ovh.net/ftp.centos.org/7.2.1511/isos/x86_64/CentOS-7-x86_64-DVD-1511.iso",
+    "iso_url": "http://centos.bhs.mirrors.ovh.net/ftp.centos.org/7.3.1611/isos/x86_64/CentOS-7-x86_64-DVD-1611.iso",
     "no_proxy": "{{env `no_proxy`}}",
     "rsync_proxy": "{{env `rsync_proxy`}}",
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "update": "true",
-    "version": "0.9.8"
+    "version": "1.0.0"
   }
 }
 
