@@ -9,8 +9,8 @@ Vagrant boxes using Packer.
 
 64-bit boxes:
 
-* [CentOS 7.2 (64-bit)](https://atlas.hashicorp.com/inclusivedesign/boxes/centos7)
-* [CentOS 7.2 Desktop (64-bit)](https://atlas.hashicorp.com/inclusivedesign/boxes/centos7-desktop)
+* [CentOS 7.4 (64-bit)](https://atlas.hashicorp.com/inclusivedesign/boxes/centos7)
+* [CentOS 7.4 Desktop (64-bit)](https://atlas.hashicorp.com/inclusivedesign/boxes/centos7-desktop)
 
 ## Building the Vagrant boxes
 

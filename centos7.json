@@ -9,7 +9,7 @@
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
-      "iso_checksum_type": "sha1",
+      "iso_checksum_type": "sha256",
       "iso_urls": [
         "{{ user `iso_path` }}/{{ user `iso_name` }}",
         "{{ user `iso_url` }}"
@@ -37,7 +37,7 @@
       "headless": "{{ user `headless` }}",
       "http_directory": "http",
       "iso_checksum": "{{ user `iso_checksum` }}",
-      "iso_checksum_type": "sha1",
+      "iso_checksum_type": "sha256",
       "iso_urls": [
         "{{ user `iso_path` }}/{{ user `iso_name` }}",
         "{{ user `iso_url` }}"
@@ -121,16 +121,16 @@
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
     "install_vagrant_key": "true",
-    "iso_checksum": "c018577c75b2434fbb2c324789dee0ba887d9c32",
-    "iso_name": "CentOS-7-x86_64-DVD-1611.iso",
+    "iso_checksum": "ec7500d4b006702af6af023b1f8f1b890b6c7ee54400bb98cef968b883cd6546",
+    "iso_name": "CentOS-7-x86_64-DVD-1708.iso",
     "iso_path": "iso",
-    "iso_url": "http://centos.bhs.mirrors.ovh.net/ftp.centos.org/7.3.1611/isos/x86_64/CentOS-7-x86_64-DVD-1611.iso",
+    "iso_url": "http://centos.bhs.mirrors.ovh.net/ftp.centos.org/7.4.1708/isos/x86_64/CentOS-7-x86_64-DVD-1708.iso",
     "no_proxy": "{{env `no_proxy`}}",
     "rsync_proxy": "{{env `rsync_proxy`}}",
     "ssh_password": "vagrant",
     "ssh_username": "vagrant",
     "update": "true",
-    "version": "1.0.0"
+    "version": "20171004"
   }
 }
 
