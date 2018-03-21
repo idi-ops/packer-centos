@@ -10,5 +10,5 @@
     - common
     - vagrant
 
-    - role: docker
-      docker_admin_users: vagrant
+    - role: docker-ce
+      docker_ce_admin_users: vagrant

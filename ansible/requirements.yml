@@ -4,5 +4,5 @@
 - src: https://github.com/idi-ops/ansible-vagrant
   name: vagrant
 
-- src: https://github.com/idi-ops/ansible-docker
-  name: docker
+- src: https://github.com/idi-ops/ansible-docker-ce
+  name: docker-ce
