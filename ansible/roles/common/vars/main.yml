@@ -1,7 +1,0 @@
----
-
-common_packages:
-  - epel-release
-  - git
-  - vim
-  - vim-enhanced

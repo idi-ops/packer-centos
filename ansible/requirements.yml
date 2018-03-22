@@ -1,8 +1,0 @@
-- src: https://github.com/idi-ops/ansible-facts
-  name: facts
-
-- src: https://github.com/idi-ops/ansible-vagrant
-  name: vagrant
-
-- src: https://github.com/idi-ops/ansible-docker-ce
-  name: docker-ce

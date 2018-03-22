@@ -1,9 +1,5 @@
 #!/bin/bash -eux
 
-#CLEANUP_PAUSE=${CLEANUP_PAUSE:-0}
-#echo "==> Pausing for ${CLEANUP_PAUSE} seconds..."
-#sleep ${CLEANUP_PAUSE}
-
 echo "==> Removing old kernels"
 yum install -y yum-utils
 package-cleanup -y --oldkernels --count=1
@@ -68,7 +64,7 @@ rm -rf /tmp/*
 echo '==> Zeroing out empty area to save space in the final image'
 # Zero out the free space to save space in the final image.  Contiguous
 # zeroed space compresses down to nothing.
-dd if=/dev/zero of=/EMPTY bs=1M
+dd if=/dev/zero of=/EMPTY bs=1M || true
 rm -f /EMPTY
 
 # Block until the empty file has been removed, otherwise, Packer
