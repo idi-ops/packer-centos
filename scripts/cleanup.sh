@@ -45,7 +45,7 @@ done
 # add gateway interface connection.
 gwdev=\`nmcli dev | grep ethernet | egrep -v 'unmanaged' | head -n 1 | awk '{print \$1}'\`
 if [ "\$gwdev" != "" ]; then
-  nmcli c add type eth ifname \$gwdev con-name \$gwdev
+  nmcli c add type ethernet ifname \$gwdev con-name \$gwdev
 fi
 
 sed -i -e "/^#BOXCUTTER-BEGIN/,/^#BOXCUTTER-END/{s/^/# /}" /etc/rc.d/rc.local
