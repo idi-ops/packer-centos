@@ -8,7 +8,7 @@ This repository contains templates for the latest CentOS 7.x that can create Vag
 
 64-bit boxes:
 
-* [CentOS 7.4 (64-bit)](https://atlas.hashicorp.com/inclusivedesign/boxes/centos7)
+* [CentOS 7 (64-bit)](https://atlas.hashicorp.com/inclusivedesign/boxes/centos7)
 
 ## Building the Vagrant boxes
 
