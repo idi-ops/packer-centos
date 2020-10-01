@@ -49,7 +49,6 @@
       "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash -eux '{{.Path}}'",
       "scripts": [
         "scripts/sshd.sh",
-        "scripts/update.sh",
         "scripts/vagrant.sh",
         "scripts/docker.sh",
         "scripts/systemd.sh",
